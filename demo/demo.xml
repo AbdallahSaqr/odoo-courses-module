@@ -1,0 +1,30 @@
+<odoo>
+    <data>
+        <record id="course_python" model="courses.course">
+            <field name="name">Python Programming</field>
+            <field name="description">Learn Python programming from basics to advanced concepts</field>
+            <field name="teacher">Dr. Smith</field>
+            <field name="start_date">2025-07-01</field>
+            <field name="end_date">2025-09-30</field>
+            <field name="cost">500.00</field>
+        </record>
+
+        <record id="course_web_dev" model="courses.course">
+            <field name="name">Web Development</field>
+            <field name="description">Full-stack web development with HTML, CSS, JavaScript, and frameworks</field>
+            <field name="teacher">Prof. Johnson</field>
+            <field name="start_date">2025-08-15</field>
+            <field name="end_date">2025-12-15</field>
+            <field name="cost">750.00</field>
+        </record>
+
+        <record id="course_data_science" model="courses.course">
+            <field name="name">Data Science Fundamentals</field>
+            <field name="description">Introduction to data analysis, statistics, and machine learning</field>
+            <field name="teacher">Dr. Williams</field>
+            <field name="start_date">2025-09-01</field>
+            <field name="end_date">2025-11-30</field>
+            <field name="cost">600.00</field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+    <!-- List View -->
+    <record id="view_courses_list" model="ir.ui.view">
+      <field name="name">courses.course.list</field>
+      <field name="model">courses.course</field>
+      <field name="arch" type="xml">
+        <list>
+          <field name="name"/>
+          <field name="teacher"/>
+          <field name="start_date"/>
+          <field name="end_date"/>
+          <field name="cost"/>
+          <field name="responsible_id"/>
+        </list>
+      </field>
+    </record>
+
+    <!-- Form View -->
+    <record id="view_courses_form" model="ir.ui.view">
+      <field name="name">courses.course.form</field>
+      <field name="model">courses.course</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <div class="oe_title">
+              <h1>
+                <field name="name" placeholder="Course Name"/>
+              </h1>
+            </div>
+            <group>
+              <group name="course_info" string="Course Information">
+                <field name="teacher"/>
+                <field name="responsible_id"/>
+                <field name="cost"/>
+              </group>
+              <group name="dates" string="Schedule">
+                <field name="start_date"/>
+                <field name="end_date"/>
+              </group>
+            </group>
+            <notebook>
+              <page string="Description" name="description">
+                <field name="description" placeholder="Course description..."/>
+              </page>
+            </notebook>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <!-- Action Window -->
+    <record id="action_courses" model="ir.actions.act_window">
+      <field name="name">Courses</field>
+      <field name="res_model">courses.course</field>
+      <field name="view_mode">list,form</field>
+      <field name="view_ids" eval="[(5, 0, 0),
+                                      (0, 0, {'view_mode': 'list', 'view_id': ref('view_courses_list')}),
+                                      (0, 0, {'view_mode': 'form', 'view_id': ref('view_courses_form')})]"/>
+    </record>
+
+    <!-- Menu -->
+    <menuitem id="courses_menu_root" name="Courses"/>
+    <menuitem id="courses_menu_main" name="Courses" parent="courses_menu_root" action="action_courses"/>
+  </data>
+</odoo>
