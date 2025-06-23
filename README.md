@@ -1,44 +1,41 @@
-# Odoo Courses Module
+# Odoo Courses Management - Lab 2
 
-This is a custom module for Odoo 18 developed as part of a lab exercise (Lab 1) during my ITI Full-Stack Web Development diploma. The module introduces a basic **Course Management System** inside Odoo.
+This module is part of the ITI Full Stack Python program (Odoo Lab 2).  
+It extends the basic course management system by adding student enrollment functionality and advanced views.
 
-## 📚 Features
+## Features
 
-- Custom model `courses.course`
-- Fields include:
-  - Course Name
-  - Description
-  - Start Date / End Date
-  - Cost
-  - Teacher
-  - Responsible User (linked to res.users)
-- Custom views:
-  - Tree (list) view
-  - Form view with grouped fields and notebook sections
-- Accessible through a dedicated menu and action window
+### 1. Course Management (`courses.course`)
+- Fields: name, description, teacher, responsible, cost, start_date, end_date
+- Views: List, Form, Kanban, Pivot (by name & cost), Graph (bar chart of cost)
+- Embedded One2many list of enrollments shown in a notebook tab
 
-## 🛠 Tech Stack
+### 2. Student Management (`courses.student`)
+- Fields: name, code, birthdate, address
+- Views: List (name + code), Form
+- Accessed via submenu under Academic Management
 
-- Odoo 18
-- Python 3.12
-- PostgreSQL
-- XML for view definitions
+### 3. Enrollment Management (`courses.enrollment`)
+- Fields: name, student (Many2one), course (Many2one), enrollment date, cost (related to course cost)
+- Views: List, Form
+- Displayed inside the course form using a One2many field
+- Enrollment cost auto-fetched from the related course
 
-## 📁 Directory Structure
+## Menu Structure
+- **Academic Management**
+  - Courses
+  - Students
+  - Enrollments
 
-custom-addons/
-└── courses/
-├── init.py
-├── manifest.py
-├── models/
-│ └── course.py
-├── views/
-│ └── course_views.xml
+## Access Rights
+Basic access is granted to internal users (group_user) for all models (read, create, write, unlink).
 
+## Technical Details
+- Built for Odoo 18.0
+- Custom models defined under `models/` directory
+- Views defined under `views/` directory
+- Access rights defined in `security/ir.model.access.csv`
 
-## 🚀 Getting Started
-
-1. Clone this repository into your Odoo `custom-addons` directory.
-2. Add the path to `addons_path` in your `odoo.conf`.
-3. Restart the Odoo server and update the app list.
-4. Install the module "Courses" via the Apps menu.
+## Author
+**Abdallah Ramadan Abdelshaphy**  
+ITI Alexandria - Full Stack Python Track  
